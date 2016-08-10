@@ -36,7 +36,9 @@ echo -e "${COLOR_MAGENTA}Sniffing your code, hang tight...${COLOR_RESET}"
 
 for FILE in $STAGED_FILES
 do
-  eslint "$FILE"
+  # This assumes the developer has a task in their project named `lint`,
+  # and have `eslint` installed as a dependency
+  npm run lint "$FILE"
 
   if [[ "$?" == 0 ]]; then
     echo -e "👍  Passed: $FILE"
